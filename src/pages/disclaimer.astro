@@ -1,0 +1,202 @@
+---
+import BaseLayout from "../layouts/Layout.astro";
+---
+
+<BaseLayout
+  title="Aviso Legal y Disclaimer - Feed de La Mar de Parques"
+  description="Información sobre el uso del feed RSS del foro de La Mar de Parques y disclaimer legal."
+>
+  <article class="prose prose-zinc dark:prose-invert max-w-none">
+    <!-- Header -->
+    <header class="mb-8">
+      <h1 class="text-3xl font-bold bg-linear-to-r from-zinc-900 to-zinc-600 dark:from-zinc-100 dark:to-zinc-400 bg-clip-text text-transparent mb-4">
+        Aviso Legal y Disclaimer
+      </h1>
+      <p class="text-sm text-zinc-600 dark:text-zinc-400">
+        Última actualización: {new Date().toLocaleDateString('es-ES', { year: 'numeric', month: 'long', day: 'numeric' })}
+      </p>
+    </header>
+
+    <!-- Disclaimer principal -->
+    <section class="bg-blue-50 dark:bg-blue-950/30 border border-blue-200 dark:border-blue-900 rounded-lg p-6 mb-8">
+      <h2 class="text-xl font-semibold text-blue-900 dark:text-blue-100 mt-0 mb-3">
+        ℹ️ Sobre este sitio
+      </h2>
+      <p class="text-blue-800 dark:text-blue-200 mb-0">
+        Esta página web ha sido creada con el único fin de ofrecer una <strong>visualización alternativa</strong>
+        del contenido del foro de La Mar de Parques. Todos los datos mostrados provienen del
+        <strong>feed RSS público</strong> que el foro oficial expone de manera pública.
+      </p>
+    </section>
+
+    <!-- Sección: Uso del Feed RSS -->
+    <section class="mb-8">
+      <h2 class="text-2xl font-semibold text-zinc-900 dark:text-zinc-100 mb-4">
+        📡 Uso del Feed RSS
+      </h2>
+      <div class="space-y-4 text-zinc-700 dark:text-zinc-300">
+        <p>
+          Este sitio hace uso del feed RSS público disponible en:
+          <a
+            href="https://lamardeparques.es/foro/app.php/feed"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-blue-600 dark:text-blue-400 hover:underline"
+          >
+            https://lamardeparques.es/foro/app.php/feed
+          </a>
+        </p>
+        <p>
+          El feed RSS es un formato estándar de sindicación de contenido que permite a los usuarios
+          y aplicaciones acceder a las actualizaciones del foro de forma estructurada. Este sitio
+          simplemente procesa y presenta dicha información de una manera más visual y moderna.
+        </p>
+        <ul class="list-disc list-inside space-y-2 ml-4">
+          <li>No almacenamos ningún contenido del foro</li>
+          <li>No modificamos el contenido original</li>
+          <li>Todos los enlaces redirigen al foro oficial</li>
+          <li>Los datos se obtienen en tiempo real del feed RSS público</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Sección: Propiedad Intelectual -->
+    <section class="mb-8">
+      <h2 class="text-2xl font-semibold text-zinc-900 dark:text-zinc-100 mb-4">
+        © Propiedad Intelectual
+      </h2>
+      <div class="space-y-4 text-zinc-700 dark:text-zinc-300">
+        <p>
+          Todo el contenido mostrado en este sitio (textos, títulos, publicaciones) es propiedad
+          de <strong>La Mar de Parques</strong> y sus respectivos autores originales.
+        </p>
+        <p>
+          Este sitio <strong>NO está afiliado, asociado, autorizado, respaldado por, ni de ninguna
+          manera oficialmente conectado</strong> con La Mar de Parques o cualquiera de sus filiales
+          o afiliados.
+        </p>
+        <p>
+          Los nombres "La Mar de Parques" y cualquier marca relacionada son propiedad de sus
+          respectivos dueños.
+        </p>
+      </div>
+    </section>
+
+    <!-- Sección: Limitación de Responsabilidad -->
+    <section class="mb-8">
+      <h2 class="text-2xl font-semibold text-zinc-900 dark:text-zinc-100 mb-4">
+        ⚖️ Limitación de Responsabilidad
+      </h2>
+      <div class="space-y-4 text-zinc-700 dark:text-zinc-300">
+        <p>
+          Este sitio se proporciona "tal cual" sin garantías de ningún tipo. No garantizamos:
+        </p>
+        <ul class="list-disc list-inside space-y-2 ml-4">
+          <li>La disponibilidad continua del servicio</li>
+          <li>La exactitud o completitud de la información mostrada</li>
+          <li>Que el sitio esté libre de errores o interrupciones</li>
+          <li>La actualización en tiempo real del contenido</li>
+        </ul>
+        <p>
+          El uso de este sitio es bajo su propio riesgo. No nos hacemos responsables por cualquier
+          daño directo, indirecto, incidental o consecuente que pueda surgir del uso o la
+          imposibilidad de uso de este sitio.
+        </p>
+      </div>
+    </section>
+
+    <!-- Sección: Enlaces Externos -->
+    <section class="mb-8">
+      <h2 class="text-2xl font-semibold text-zinc-900 dark:text-zinc-100 mb-4">
+        🔗 Enlaces Externos
+      </h2>
+      <div class="space-y-4 text-zinc-700 dark:text-zinc-300">
+        <p>
+          Este sitio contiene enlaces al foro oficial de La Mar de Parques. No somos responsables
+          del contenido de sitios web externos ni de las prácticas de privacidad de dichos sitios.
+        </p>
+        <p>
+          Recomendamos revisar las políticas de privacidad y términos de servicio del
+          <a
+            href="https://lamardeparques.es"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-blue-600 dark:text-blue-400 hover:underline"
+          >
+            sitio oficial de La Mar de Parques
+          </a>.
+        </p>
+      </div>
+    </section>
+
+    <!-- Sección: Privacidad -->
+    <section class="mb-8">
+      <h2 class="text-2xl font-semibold text-zinc-900 dark:text-zinc-100 mb-4">
+        🔒 Privacidad
+      </h2>
+      <div class="space-y-4 text-zinc-700 dark:text-zinc-300">
+        <p>
+          Este sitio no recopila, almacena ni procesa datos personales de los usuarios.
+          Únicamente se utiliza localStorage del navegador para guardar la preferencia de tema
+          (claro/oscuro) de forma local en tu dispositivo.
+        </p>
+        <p>
+          No utilizamos cookies de seguimiento, análisis o publicidad.
+        </p>
+      </div>
+    </section>
+
+    <!-- Sección: Contacto -->
+    <section class="mb-8">
+      <h2 class="text-2xl font-semibold text-zinc-900 dark:text-zinc-100 mb-4">
+        📧 Contacto
+      </h2>
+      <div class="space-y-4 text-zinc-700 dark:text-zinc-300">
+        <p>
+          Si tienes alguna pregunta sobre este disclaimer o deseas reportar algún problema,
+          por favor contacta con el administrador del sitio.
+        </p>
+        <p>
+          Para cuestiones relacionadas con el contenido original, por favor contacta directamente
+          con <a
+            href="https://lamardeparques.es"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-blue-600 dark:text-blue-400 hover:underline"
+          >
+            La Mar de Parques
+          </a>.
+        </p>
+      </div>
+    </section>
+
+    <!-- Sección: Eliminación de Contenido -->
+    <section class="bg-amber-50 dark:bg-amber-950/30 border border-amber-200 dark:border-amber-900 rounded-lg p-6 mb-8">
+      <h2 class="text-xl font-semibold text-amber-900 dark:text-amber-100 mt-0 mb-3">
+        🗑️ Solicitud de Eliminación
+      </h2>
+      <p class="text-amber-800 dark:text-amber-200 mb-0">
+        Si eres el propietario de La Mar de Parques o un representante autorizado y deseas que
+        este sitio sea dado de baja, por favor contacta con nosotros y procederemos a eliminarlo
+        de inmediato sin necesidad de procedimientos legales.
+      </p>
+    </section>
+
+    <!-- Botón de regreso -->
+    <div class="mt-12 text-center">
+      <a
+        href="/"
+        class="inline-flex items-center gap-2 px-6 py-3 bg-zinc-900 dark:bg-zinc-100 text-white dark:text-zinc-900 rounded-lg hover:bg-zinc-800 dark:hover:bg-zinc-200 transition-colors font-medium"
+      >
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
+        </svg>
+        Volver al feed
+      </a>
+    </div>
+  </article>
+</BaseLayout>
+
+<style>
+
+</style>

@@ -1,0 +1,43 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Fondo degradado -->
+  <rect width="1200" height="630" fill="#09090b"/>
+  <rect width="1200" height="630" fill="url(#gradient)" opacity="0.8"/>
+
+  <!-- Definición del gradiente -->
+  <defs>
+    <linearGradient id="gradient" x1="0" y1="0" x2="1200" y2="630" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#3b82f6" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#8b5cf6" stop-opacity="0.3"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Grid pattern -->
+  <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+    <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#27272a" stroke-width="1"/>
+  </pattern>
+  <rect width="1200" height="630" fill="url(#grid)" opacity="0.3"/>
+
+  <!-- Contenido -->
+  <g>
+    <!-- Icono de RSS Feed -->
+    <circle cx="600" cy="220" r="60" fill="#3b82f6" opacity="0.2"/>
+    <path d="M570 250c0-16.569 13.431-30 30-30m-30 30c0 16.569 13.431 30 30 30m-60-30c0-33.137 26.863-60 60-60m0 120c-66.274 0-120-53.726-120-120" stroke="#3b82f6" stroke-width="4" stroke-linecap="round" fill="none"/>
+    <circle cx="570" cy="250" r="8" fill="#3b82f6"/>
+
+    <!-- Título -->
+    <text x="600" y="360" font-family="system-ui, -apple-system, sans-serif" font-size="56" font-weight="700" fill="#fafafa" text-anchor="middle">
+      La Mar de Parques
+    </text>
+
+    <!-- Subtítulo -->
+    <text x="600" y="420" font-family="system-ui, -apple-system, sans-serif" font-size="32" font-weight="400" fill="#a1a1aa" text-anchor="middle">
+      Feed de Novedades
+    </text>
+
+    <!-- Badge -->
+    <rect x="520" y="460" width="160" height="40" rx="20" fill="#18181b" stroke="#3b82f6" stroke-width="2"/>
+    <text x="600" y="487" font-family="system-ui, -apple-system, sans-serif" font-size="18" font-weight="600" fill="#3b82f6" text-anchor="middle">
+      RSS Feed
+    </text>
+  </g>
+</svg>

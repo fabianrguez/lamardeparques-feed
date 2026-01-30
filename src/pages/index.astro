@@ -1,11 +1,58 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
+import BaseLayout from "../layouts/Layout.astro";
+import { XMLParser } from "fast-xml-parser";
+import { cleanTitle, timeAgo } from "../lib/feed";
+import FeedCard from "../components/feed-card.astro";
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+export const prerender = false;
+const FEED_URL = "https://lamardeparques.es/foro/app.php/feed";
+
+const res = await fetch(FEED_URL, {
+  headers: {
+    "User-Agent": "Astro Feed Reader",
+  },
+  // Opcional: cache en SSR
+  cache: "force-cache",
+});
+
+const xml = await res.text();
+
+const parser = new XMLParser({
+  ignoreAttributes: false,
+  attributeNamePrefix: "",
+});
+
+const parsed = parser.parse(xml);
+const entries = parsed.feed?.entry ?? [];
+
+console.log(entries);
+
+const items = entries.map((e) => ({
+  id: e.id,
+  author: e.author?.name ?? "Desconocido",
+  title: cleanTitle(e.title?.["#text"] ?? e.title),
+  category: e.category?.label ?? "",
+  categoryLink: e.category?.scheme ?? "",
+  published: new Date(e.published),
+  link: e.link?.href,
+}));
+
+console.log(items)
 ---
 
-<Layout>
-	<Welcome />
-</Layout>
+<BaseLayout title="Feed de La Mar de Parques">
+	<header class="mb-8">
+		<h1 class="text-3xl font-bold bg-gradient-to-r from-zinc-900 to-zinc-600 dark:from-zinc-100 dark:to-zinc-400 bg-clip-text text-transparent">
+			Feed de La Mar de Parques
+		</h1>
+		<p class="mt-2 text-sm font-jetbrains text-zinc-600 dark:text-zinc-400">
+			Últimas publicaciones del foro • <a href="/disclaimer" class="underline hover:text-zinc-900 dark:hover:text-zinc-100">Ver aviso legal</a>
+		</p>
+	</header>
+
+	<section class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+      {items.map((item) => (
+              <FeedCard title={item.title} author={item.author} published={item.published} link={item.link} category={item.category} categoryLink={item.categoryLink}/>
+      ))}
+    </section>
+</BaseLayout>

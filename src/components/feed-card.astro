@@ -1,0 +1,94 @@
+---
+import {timeAgo} from "../lib/feed.ts";
+interface Props {
+  title: string;
+  author: string;
+  published: Date;
+  link: string;
+  category: string;
+  categoryLink: string;
+}
+
+const {title, author, published, link, category, categoryLink} = Astro.props;
+---
+<article
+        class="
+    group
+    relative
+    p-4
+    rounded-lg
+    border border-zinc-200 dark:border-zinc-800
+    bg-white dark:bg-zinc-950
+    transition-all duration-200
+    hover:border-zinc-300 dark:hover:border-zinc-700
+    hover:shadow-md hover:shadow-zinc-200/50 dark:hover:shadow-zinc-900/50
+    hover:-translate-y-0.5
+  "
+>
+    <!-- META -->
+    <header class="flex flex-wrap items-center gap-2 text-sm justify-between">
+        <div class="flex items-center gap-2 min-w-0 flex-shrink">
+          <span class="font-monospace font-semibold text-zinc-800 dark:text-zinc-200 truncate">
+            {author}
+          </span>
+          <span class="font-monospace text-zinc-400 dark:text-zinc-600">·</span>
+          <time class="font-monospace text-zinc-500 dark:text-zinc-400 whitespace-nowrap">{timeAgo(published)}</time>
+        </div>
+
+      {category && (
+        <a             href={categoryLink}
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       class="
+        block
+        shrink-0
+        font-medium
+        text-zinc-900 dark:text-zinc-50
+        group-hover:text-blue-600 dark:group-hover:text-blue-400
+        transition-colors duration-200
+      ">
+          <span class="
+            px-2.5 py-0.5
+            whitespace-nowrap
+            font-monospace
+            text-xs font-medium
+            rounded-full
+            bg-blue-100 dark:bg-blue-950
+            text-blue-700 dark:text-blue-300
+            border border-blue-200 dark:border-blue-900
+          ">
+            {category}
+          </span>
+        </a>
+      )}
+    </header>
+
+    <!-- TITLE -->
+    <a
+            href={link}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="
+        block
+        mt-3
+        text-lg
+        font-medium
+        leading-snug
+        text-zinc-900 dark:text-zinc-50
+        group-hover:text-blue-600 dark:group-hover:text-blue-400
+        transition-colors duration-200
+        wrap-break-word
+      "
+    >
+      {title}
+        <svg
+                class="inline-block ml-1.5 w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity duration-200"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+        >
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+        </svg>
+    </a>
+</article>

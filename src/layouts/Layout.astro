@@ -1,22 +1,98 @@
-<!doctype html>
-<html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
-	</head>
-	<body>
-		<slot />
-	</body>
-</html>
+---
+import "@/styles/global.css"
+import '@fontsource-variable/jetbrains-mono';
+import '@fontsource-variable/onest';
+import Footer from "@/components/footer.astro";
+import Background from "@/components/background.astro";
+import ThemeToggle from "@/components/theme-toggle.astro";
+import ColorSelector from "@/components/color-selector.astro";
 
-<style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-	}
-</style>
+interface Props {
+	title?: string;
+	description?: string;
+	image?: string;
+	url?: string;
+}
+
+const {
+	title = "Feed de La Mar de Parques",
+	description = "Visualización alternativa del feed RSS del foro de La Mar de Parques. Mantente al día con las últimas publicaciones de la comunidad sobre parques de atracciones y temáticos.",
+	image = "/og-image.svg",
+	url = Astro.url.href,
+} = Astro.props;
+
+const siteName = "Feed de La Mar de Parques";
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+---
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width" />
+	<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+	<link rel="canonical" href={canonicalURL} />
+
+	<!-- SEO básico -->
+	<title>{title}</title>
+	<meta name="title" content={title} />
+	<meta name="description" content={description} />
+	<meta name="author" content="Fabián Rodríguez" />
+	<meta name="keywords" content="parques de atracciones, parques temáticos, foro, novedades, la mar de parques, noticias, rss feed, feed reader" />
+
+	<!-- Open Graph / Facebook -->
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content={url} />
+	<meta property="og:title" content={title} />
+	<meta property="og:description" content={description} />
+	<meta property="og:image" content={new URL(image, Astro.url)} />
+	<meta property="og:site_name" content={siteName} />
+	<meta property="og:locale" content="es_ES" />
+
+	<!-- Twitter -->
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:url" content={url} />
+	<meta name="twitter:title" content={title} />
+	<meta name="twitter:description" content={description} />
+	<meta name="twitter:image" content={new URL(image, Astro.url)} />
+
+	<!-- RSS Feed -->
+	<link
+		rel="alternate"
+		type="application/rss+xml"
+		title="RSS Feed - La Mar de Parques"
+		href="https://lamardeparques.es/foro/app.php/feed"
+	/>
+
+	<!-- Preconnect para mejorar rendimiento -->
+	<link rel="preconnect" href="https://lamardeparques.es" />
+
+	<!-- Script inline para prevenir flash de tema -->
+	<script is:inline>
+		(function() {
+			function getTheme() {
+				if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
+					return localStorage.getItem('theme');
+				}
+				return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+			}
+
+			const theme = getTheme();
+			if (theme === 'dark') {
+				document.documentElement.classList.add('dark');
+			} else {
+				document.documentElement.classList.remove('dark');
+			}
+		})();
+	</script>
+</head>
+<body
+	class="relative bg-zinc-50 text-zinc-900 dark:bg-zinc-950 dark:text-zinc-100 min-h-screen h-full w-full flex flex-col overflow-x-hidden"
+>
+<main class="relative z-10 mx-auto w-full max-w-7xl py-8 px-4 sm:px-6 lg:px-8 flex-1">
+	<Background />
+	<slot />
+</main>
+<Footer />
+</body>
+</html>
