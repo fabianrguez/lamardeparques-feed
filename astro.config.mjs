@@ -8,8 +8,7 @@ import cloudflare from '@astrojs/cloudflare';
 
 // https://astro.build/config
 export default defineConfig({
-  // TODO: Cambiar por tu dominio real antes de deployar
-  site: 'https://tudominio.com',
+  site: 'https://lamardeparques-feed.pages.dev/',
 
   integrations: [sitemap()],
 
