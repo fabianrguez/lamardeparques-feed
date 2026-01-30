@@ -66,23 +66,6 @@ FEED_URL=https://lamardeparques.es/foro/app.php/feed
 
 ## 🎨 Personalización
 
-### Colores y tema
-
-Los colores se gestionan mediante Tailwind CSS. Para personalizar, edita:
-
-```javascript
-// tailwind.config.mjs
-export default {
-  theme: {
-    extend: {
-      colors: {
-        // Añade tus colores personalizados
-      },
-    },
-  },
-};
-```
-
 ### SEO
 
 Personaliza los meta tags por página:
