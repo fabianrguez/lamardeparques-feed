@@ -31,36 +31,3 @@
         <circle cx="15" cy="-25" r="1.5" fill="#fde047" opacity="0.6"/>
     </g>
 </svg>
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
-<!-- Fondo minimalista -->
-<defs>
-    <linearGradient id="bg3" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" style="stop-color:#6366f1;stop-opacity:1" />
-        <stop offset="100%" style="stop-color:#a855f7;stop-opacity:1" />
-    </linearGradient>
-</defs>
-
-<rect width="128" height="128" rx="24" fill="url(#bg3)"/>
-
-<!-- Loop de montaña rusa simplificado -->
-<g transform="translate(64, 64)">
-    <!-- Loop principal -->
-    <circle cx="0" cy="-10" r="25" stroke="#ffffff" stroke-width="5" fill="none" opacity="0.9"/>
-    <circle cx="0" cy="-10" r="20" stroke="#ffffff" stroke-width="3" fill="none" opacity="0.6"/>
-
-    <!-- Track de entrada y salida -->
-    <path d="M -40 20 L -25 -10" stroke="#ffffff" stroke-width="5" stroke-linecap="round" opacity="0.9"/>
-    <path d="M 25 -10 L 40 20" stroke="#ffffff" stroke-width="5" stroke-linecap="round" opacity="0.9"/>
-
-    <!-- Carro en el loop -->
-    <g transform="rotate(-45) translate(0, -35)">
-        <rect x="-6" y="-4" width="12" height="8" rx="1" fill="#fde047"/>
-        <circle cx="-3" cy="4" r="1.5" fill="#1e293b"/>
-        <circle cx="3" cy="4" r="1.5" fill="#1e293b"/>
-    </g>
-
-    <!-- Efectos de brillo -->
-    <circle cx="-15" cy="-25" r="2" fill="#fde047" opacity="0.8"/>
-    <circle cx="15" cy="-25" r="1.5" fill="#fde047" opacity="0.6"/>
-</g>
-</svg>
