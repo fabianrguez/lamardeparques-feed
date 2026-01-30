@@ -7,37 +7,43 @@ import FeedCard from "../components/feed-card.astro";
 export const prerender = false;
 const FEED_URL = "https://lamardeparques.es/foro/app.php/feed";
 
-const res = await fetch(FEED_URL, {
-  headers: {
-    "User-Agent": "Astro Feed Reader",
-  },
-  // Opcional: cache en SSR
-  cache: "force-cache",
-});
+let items = [];
 
-const xml = await res.text();
+try {
+	const res = await fetch(FEED_URL, {
+		headers: {
+			"User-Agent": "Mozilla/5.0 (Astro Feed Reader)",
+			"Accept": "application/xml,text/xml",
+		},
+	});
 
-const parser = new XMLParser({
-  ignoreAttributes: false,
-  attributeNamePrefix: "",
-});
+	if (!res.ok) {
+		throw new Error(`Feed error: ${res.status}`);
+	}
 
-const parsed = parser.parse(xml);
-const entries = parsed.feed?.entry ?? [];
+	const xml = await res.text();
 
-console.log(entries);
+	const parser = new XMLParser({
+		ignoreAttributes: false,
+		attributeNamePrefix: "",
+	});
 
-const items = entries.map((e) => ({
-  id: e.id,
-  author: e.author?.name ?? "Desconocido",
-  title: cleanTitle(e.title?.["#text"] ?? e.title),
-  category: e.category?.label ?? "",
-  categoryLink: e.category?.scheme ?? "",
-  published: new Date(e.published),
-  link: e.link?.href,
-}));
+	const parsed = parser.parse(xml);
+	const entries = parsed.feed?.entry ?? [];
 
-console.log(items)
+	items = entries.map((e) => ({
+		id: e.id,
+		author: e.author?.name ?? "Desconocido",
+		title: cleanTitle(e.title?.["#text"] ?? e.title),
+		category: e.category?.label ?? "",
+		categoryLink: e.category?.scheme ?? "",
+		published: e.published ? new Date(e.published) : null,
+		link: e.link?.href,
+	}));
+
+} catch (err) {
+	console.error("Feed SSR error:", err);
+}
 ---
 
 <BaseLayout title="Feed de La Mar de Parques">
