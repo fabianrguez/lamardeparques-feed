@@ -39,6 +39,7 @@ try {
 		categoryLink: e.category?.scheme ?? "",
 		published: e.published ? new Date(e.published) : null,
 		link: e.link?.href,
+		content: e.content?.["#text"] ?? "",
 	}));
 
 } catch (err) {
